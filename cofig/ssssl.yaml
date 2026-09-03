@@ -1,0 +1,124 @@
+# =========================================================
+# SegAlign-SSL v2-fast (Ablation Version)
+# =========================================================
+
+# =========================
+# Data
+# =========================
+data_root: "C:/D/Data/LUNG"
+
+image_size: 224
+patch_size: 16
+
+# =========================
+# Backbone
+# =========================
+backbone_impl: "timm"
+
+vit_path: "C:/D/Project/vit-base-patch16-224"
+hf_model_name_or_path: ""
+vit_weight_path: ""
+
+timm_model_name: "vit_base_patch16_224"
+timm_pretrained: false
+coach_bin: "C:/D/Project/coach/pytorch_model.bin"
+
+# =========================
+# Train
+# =========================
+batch_size: 4
+epochs: 30
+
+lr: 0.0001
+backbone_lr: 0.00001
+
+warmup_epochs: 1
+
+weight_decay: 0.05
+
+num_workers: 0
+
+seed: 42
+
+device: "cuda"
+
+use_amp: true
+
+# =========================================================
+# Ablation Switch
+# =========================================================
+# 论文推荐使用下面三个开关
+# 而不是把loss权重改成0
+
+use_pcl: true
+use_mpr: false
+use_struct: true
+
+# =========================
+# EMA
+# =========================
+ema_m_base: 0.996
+ema_m_final: 0.9999
+
+# =========================
+# Mask
+# =========================
+mask_ratio: 0.3
+mask_fill_mode: "mean"
+
+# =========================
+# Patch Contrastive Learning
+# =========================
+proj_dim: 256
+
+temperature: 0.2
+
+pcl_teacher_temperature: 0.1
+
+pcl_conf_power: 1.5
+
+pcl_num_sampled_patches: 64
+
+# =========================
+# Structure
+# =========================
+num_regions: 16
+
+# 保持默认即可
+# 开关负责是否启用
+w_pcl: 1.0
+w_mpr: 1.5
+w_struct: 1.0
+
+mpr_mse_alpha: 0.5
+mpr_cos_beta: 0.5
+
+# =========================
+# Save
+# =========================
+out_dir: "ssl_checkpoints_v2_lightLUADpss"
+
+save_every: 10
+
+resume_from: ""
+
+# Examples:
+# Baseline
+# use_pcl: false
+# use_mpr: false
+# use_struct: false
+#
+# w/o PCL
+# use_pcl: false
+# use_mpr: true
+# use_struct: true
+#
+# w/o MPR
+# use_pcl: true
+# use_mpr: false
+# use_struct: true
+#
+# w/o Structure
+# use_pcl: true
+# use_mpr: true
+# use_struct: false

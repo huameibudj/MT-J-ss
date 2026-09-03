@@ -1,0 +1,87 @@
+# =========================
+# 数据
+# =========================
+#data_root: "C:/D/Data/GlassAI_data/images1"
+# data_root: "C:/D/Data/LungCancerSegmentation/images1"
+image_size: 224
+patch_size: 16
+
+# =========================
+# Backbone 切换：timm / hf
+# =========================
+# 选择其一：
+#   - "hf"   : HuggingFace ViT（推荐你当前本地 vit-base-patch16-224 目录那种）
+#   - "timm" : timm ViT（支持 coach_bin）
+backbone_impl: "timm"
+
+# -------------------------
+# HF 风格（backbone_impl: hf）
+# -------------------------
+# 本地目录：必须包含 config.json + pytorch_model.bin（离线加载）
+vit_path: ""
+
+# 如果不提供 vit_path，才会用这个（可能需要联网/缓存）
+hf_model_name_or_path: ""
+
+# 可选：覆盖加载（hf/timm 都支持）
+# - hf: 覆盖 self.model.load_state_dict（会做 vit./classifier 前缀清洗）
+# - timm: 直接 load timm 视觉权重（会处理 pos_embed 插值）
+vit_weight_path: ""
+
+# -------------------------
+# timm 风格（backbone_impl: timm）
+# -------------------------
+timm_model_name: "vit_base_patch16_224"
+timm_pretrained: false
+
+# COACH 整包权重 bin（包含 visual.trunk.*）
+# 使用时把 backbone_impl 改成 timm，然后填写此路径
+coach_bin: "C:/D/Project/coach/pytorch_model.bin"
+
+# =========================
+# 训练
+# =========================
+batch_size: 4
+epochs: 30
+lr: 0.0001
+weight_decay: 0.05
+num_workers: 0
+seed: 42
+device: "cuda"
+use_amp: true
+
+# =========================
+# EMA
+# =========================
+ema_m_base: 0.996
+ema_m_final: 0.9999
+
+# =========================
+# Mask
+# =========================
+mask_ratio: 0.4
+
+# =========================
+# PCL（patch-level）
+# =========================
+proj_dim: 256
+temperature: 0.2
+pcl_num_sampled_patches: 64
+
+# =========================
+# Structure
+# =========================
+num_regions: 8
+
+# =========================
+# Loss 权重（会自动归一化到和=1；可用 0 关闭某个 loss）
+# =========================
+w_pcl: 1.0
+w_mpr: 1.0
+w_struct: 1.0
+
+# =========================
+# 保存
+# =========================
+out_dir: "ssl_checkpoints"
+save_every: 10

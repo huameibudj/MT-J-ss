@@ -1,0 +1,112 @@
+# =========================
+# Python bytecode
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# =========================
+# Virtual environments
+# =========================
+.env
+.venv
+env/
+venv/
+ENV/
+virtualenv/
+
+# =========================
+# Distribution / packaging
+# =========================
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+
+# =========================
+# Logs & temp files
+# =========================
+*.log
+logs/
+tmp/
+*.tmp
+*.swp
+*.swo
+
+# =========================
+# Testing & coverage
+# =========================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+coverage.xml
+
+# =========================
+# Type check / lint cache
+# =========================
+.mypy_cache/
+.cache/
+.pyre/
+
+# =========================
+# Database files
+# =========================
+*.sqlite3
+*.sqlite
+*.db
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Project-specific (可按需保留)
+# =========================
+instance/
+*.env.local
+pip-log.txt
+# =========================
+# Model weights / checkpoints
+# =========================
+*.pt
+*.pth
+*.ckpt
+*.onnx
+*.h5
+*.safetensors
+checkpoints/
+weights/
+models/
+runs/
+wandb/
+
+# =========================
+# Visualization outputs
+# =========================
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.gif
+*.mp4
+*.avi
+*.mov
+outputs/
+output/
+visualizations/
+figures/
+plots/
+results/

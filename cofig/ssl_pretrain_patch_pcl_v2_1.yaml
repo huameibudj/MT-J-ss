@@ -1,0 +1,96 @@
+# =========================================================
+# SegAlign-SSL v2-fast 配置
+# 适配:
+# - backbone_impl = hf / timm
+# - vit_path / hf_model_name_or_path
+# - vit_weight_path
+# - coach_bin
+# =========================================================
+
+# =========================
+# 数据
+# =========================
+data_root: "C:/D/Data/glas_processed/glas"
+image_size: 224
+patch_size: 16
+
+# =========================
+# Backbone 切换
+# 可选:
+#   - "hf"
+#   - "timm"
+# =========================
+backbone_impl: "hf"
+
+# =========================
+# HF 模式
+# 当 backbone_impl = hf 时使用
+# 二选一即可:
+#   1) vit_path
+#   2) hf_model_name_or_path
+# 建议本地目录优先
+# =========================
+vit_path: "C:/D/Project/vit-base-patch16-224"
+hf_model_name_or_path: ""
+vit_weight_path: ""
+
+# =========================
+# timm 模式
+# 当 backbone_impl = timm 时使用
+# # =========================
+# timm_model_name: "vit_base_patch16_224"
+# timm_pretrained: false
+# coach_bin: "C:/D/Project/coach/pytorch_model.bin"
+
+# =========================
+# 训练
+# =========================
+batch_size: 8
+epochs: 40
+lr: 0.0001
+warmup_epochs: 5
+weight_decay: 0.05
+num_workers: 4
+seed: 42
+device: "cuda"
+use_amp: true
+
+# =========================
+# EMA
+# =========================
+ema_m_base: 0.996
+ema_m_final: 0.9999
+
+# =========================
+# Mask
+# =========================
+mask_ratio: 0.3
+mask_fill_mode: "mean"
+
+# =========================
+# PCL
+# =========================
+proj_dim: 256
+temperature: 0.2
+pcl_teacher_temperature: 0.1
+pcl_conf_power: 1.5
+pcl_num_sampled_patches: 64
+
+# =========================
+# Structure / Loss
+# =========================
+num_regions: 16
+w_pcl: 1.0
+w_mpr: 1.5
+w_struct: 5.0
+
+mpr_mse_alpha: 0.5
+mpr_cos_beta: 0.5
+
+# =========================
+# 保存 / 恢复
+# =========================
+out_dir: "ssl_checkpoints_v2"
+save_every: 10
+log_interval: 20
+resume_from: ""

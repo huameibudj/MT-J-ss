@@ -1,0 +1,99 @@
+# =========================================================
+# SegAlign-SSL Final: PCL + MPR + ARSC
+# =========================================================
+
+# =========================
+# Data
+# =========================
+data_root: "C:/D/Data/LUNG"
+
+image_size: 224
+patch_size: 16
+
+# =========================
+# Backbone
+# =========================
+backbone_impl: "timm"
+
+vit_path: "C:/D/Project/vit-base-patch16-224"
+hf_model_name_or_path: ""
+vit_weight_path: ""
+
+timm_model_name: "vit_base_patch16_224"
+timm_pretrained: false
+coach_bin: "C:/D/Project/coach/pytorch_model.bin"
+
+# =========================
+# Train
+# =========================
+batch_size: 4
+epochs: 30
+
+lr: 0.0001
+backbone_lr: 0.00001
+warmup_epochs: 1
+weight_decay: 0.05
+
+num_workers: 0
+seed: 42
+device: "cuda"
+use_amp: true
+
+# =========================================================
+# Final Objective: PCL + MPR + ARSC
+# =========================================================
+use_pcl: true
+use_mpr: true
+use_struct: true   # 注意：最终版中 use_struct 表示启用 ARSC，不再是 naive Struct
+
+# =========================
+# EMA teacher
+# =========================
+ema_m_base: 0.996
+ema_m_final: 0.9999
+
+# =========================
+# MPR: Masked Patch Reconstruction
+# =========================
+mask_ratio: 0.3
+mask_fill_mode: "mean"
+mpr_mse_alpha: 0.5
+mpr_cos_beta: 0.5
+
+# =========================
+# PCL: Patch Contrastive Learning
+# =========================
+proj_dim: 256
+temperature: 0.2
+pcl_teacher_temperature: 0.1
+pcl_conf_power: 1.5
+pcl_num_sampled_patches: 64
+
+# =========================
+# ARSC: Adaptive Relational Structural Consistency
+# =========================
+num_regions: 16
+
+# PCL / MPR / ARSC 基础权重；ARSC 建议先从 0.3~1.0 之间试。
+w_pcl: 1.0
+w_mpr: 1.5
+w_struct: 0.5
+
+# 延迟启用 ARSC，避免早期 EMA teacher 不稳定。
+struct_start_epoch: 10
+struct_warmup_epochs: 10
+
+# 关系结构蒸馏温度与 teacher confidence 权重。
+struct_temperature: 0.2
+struct_conf_power: 1.5
+
+# patch-level 与 region-level 结构约束占比。
+arsc_patch_weight: 0.6
+arsc_region_weight: 0.4
+
+# =========================
+# Save
+# =========================
+out_dir: "ssl_checkpoints_LUADmps"
+save_every: 10
+resume_from: ""

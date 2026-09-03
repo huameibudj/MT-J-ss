@@ -1,0 +1,17 @@
+C:/D/Data/glas_processed\val\images\train_1.png	C:/D/Data/glas_processed\val\masks\train_1.png
+C:/D/Data/glas_processed\val\images\train_13.png	C:/D/Data/glas_processed\val\masks\train_13.png
+C:/D/Data/glas_processed\val\images\train_19.png	C:/D/Data/glas_processed\val\masks\train_19.png
+C:/D/Data/glas_processed\val\images\train_20.png	C:/D/Data/glas_processed\val\masks\train_20.png
+C:/D/Data/glas_processed\val\images\train_26.png	C:/D/Data/glas_processed\val\masks\train_26.png
+C:/D/Data/glas_processed\val\images\train_3.png	C:/D/Data/glas_processed\val\masks\train_3.png
+C:/D/Data/glas_processed\val\images\train_4.png	C:/D/Data/glas_processed\val\masks\train_4.png
+C:/D/Data/glas_processed\val\images\train_41.png	C:/D/Data/glas_processed\val\masks\train_41.png
+C:/D/Data/glas_processed\val\images\train_46.png	C:/D/Data/glas_processed\val\masks\train_46.png
+C:/D/Data/glas_processed\val\images\train_52.png	C:/D/Data/glas_processed\val\masks\train_52.png
+C:/D/Data/glas_processed\val\images\train_6.png	C:/D/Data/glas_processed\val\masks\train_6.png
+C:/D/Data/glas_processed\val\images\train_60.png	C:/D/Data/glas_processed\val\masks\train_60.png
+C:/D/Data/glas_processed\val\images\train_63.png	C:/D/Data/glas_processed\val\masks\train_63.png
+C:/D/Data/glas_processed\val\images\train_7.png	C:/D/Data/glas_processed\val\masks\train_7.png
+C:/D/Data/glas_processed\val\images\train_74.png	C:/D/Data/glas_processed\val\masks\train_74.png
+C:/D/Data/glas_processed\val\images\train_77.png	C:/D/Data/glas_processed\val\masks\train_77.png
+C:/D/Data/glas_processed\val\images\train_84.png	C:/D/Data/glas_processed\val\masks\train_84.png
